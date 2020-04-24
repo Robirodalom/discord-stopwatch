@@ -6,7 +6,6 @@ const { prefix, token } = require("./config.json");
 var counter;
 var s;
 var msg
-var smartCount = true;
 
 bot.on("ready", () => {
   console.log("Online");
@@ -56,7 +55,7 @@ bot.on("message", (message) => {
     }
     if (command === "stop") {
         counter = -1;
-        message.channel.send("Stopper leállítva");
+        message.channel.send("Stopper leállítva " + counter + " másodperc volt vissza");
       }
   }
 });
@@ -64,10 +63,9 @@ bot.on("message", (message) => {
 function sub() {
   counter--;
   if (counter > 0) {
-    if(counter % 30 == 0 && smartCount){
+    if(counter % 30 == 0){
         sendTimeLeft();
     }
-    console.log(counter);
     timer();
   }else{
     sendTimerOut()
