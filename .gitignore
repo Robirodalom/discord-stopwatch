@@ -1,0 +1,5 @@
+node_modules/
+
+#zipped files
+*.rar
+*.zip
