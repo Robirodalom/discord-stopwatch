@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+require('dotenv').config();
 
 const { prefix, token } = require("./config.json");
 var counter;
@@ -89,4 +90,4 @@ String.prototype.isNumber = function () {
 };
 
 
-bot.login(token);
+bot.login(process.env.stopwatch_token);
