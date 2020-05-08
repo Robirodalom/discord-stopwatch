@@ -20,6 +20,7 @@ bot.on("message", (message) => {
 bot.on("message", (message) => {
     msg = message;
     if (!message.content.startsWith(prefix) || message.author.bot) {
+      message.channel.send("Nem parancs lett megadva!")
     return;
     } 
     else {
@@ -30,11 +31,11 @@ bot.on("message", (message) => {
       message.channel.send(`Bot is online in server : ${message.guild.name}`);
     }
 
-    if (command === "ping") {
+    else if (command === "ping") {
       message.channel.send("Pong");
     }
 
-    if (command === "számolj") {
+    else if (command === "számolj") {
       if (args.length > 0) {
 
         if (args[0].isNumber()) {
@@ -53,10 +54,13 @@ bot.on("message", (message) => {
         }
       }
     }
-    if (command === "stop") {
+    else if (command === "stop") {
         counter = -1;
         message.channel.send("Stopper leállítva " + counter + " másodperc volt vissza");
-      }
+    }
+    else {
+      message.channel.send("Hibás parancs lett megadva");
+    }
   }
 });
 
